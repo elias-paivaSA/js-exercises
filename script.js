@@ -771,3 +771,119 @@ addProperty("game", "Yu-Gi-Oh!");
 console.log(dataCardsTen.cards);
 
 //// Exercício 42
+// Pega todas as cartas de um determinado tipo
+const dataCardsEleven = require('./dataMap');
+
+const getCardByType = (...cardType) => {
+  return dataCardsEleven.cards
+  .filter(({ typeId }) => cardType
+  .find((type) => type === typeId))
+  .map(({typeId, name}) => ({typeId, name}))
+  .sort((a, b) => a.typeId - b.typeId)
+};
+
+console.log(getCardByType(1, 2, 3));
+
+
+//// Exercício 43
+// Dado um array de temperaturas em graus Celsius, crie uma função que retorne um novo array com as temperaturas convertidas para Fahrenheit. A fórmula de conversão é: Fahrenheit = (Celsius * 9/5) + 32.
+
+// Temperaturas em graus Celsius
+// Resultado esperado: [ 73.4, 50, 89.6, 69.8, 116.6 ]
+const temperaturesCelsius = [23, 10, 32, 21, 47];
+const changeTemperature = () => {
+  const output = temperaturesCelsius.map((num) => num * 9/5 + 32);
+  return output
+};
+console.log(changeTemperature());
+
+//// Exercício 44 -  Raiz quadrada
+//Dado um array de números, crie uma função que retorne um novo array com as raízes quadradas dos números. No entanto, se um número for negativo, a função deve substituí-lo por NaN (Não é um Número). Utilize o método Math.sqrt() para saber a rais quadrada de um número.
+// / [ 2, 3, NaN, 4, NaN, 5 ]
+
+const squareRoot = [4, 9, -1, 16, -5, 25];
+
+const squareRootMap = () => {
+  const output = squareRoot.map((num) => Math.sqrt(num));
+  return output
+};
+console.log(squareRootMap());
+
+//// Exercício 46
+//Implemente a função formattedBookNames que deve retornar um array de strings no formato: Nome do livro - Gênero - Nome da pessoa autora.
+
+const obj = {
+  books: [
+    {
+      id: 1,
+      name: 'As Crônicas de Gelo e Fogo',
+      genre: 'Fantasia',
+      author: {
+        name: 'George R. R. Martin',
+        birthYear: 1948,
+      },
+      releaseYear: 1991,
+    },
+    {
+      id: 2,
+      name: 'O Senhor dos Anéis',
+      genre: 'Fantasia',
+      author: {
+        name: 'J. R. R. Tolkien',
+        birthYear: 1892,
+      },
+      releaseYear: 1954,
+    },
+    {
+      id: 3,
+      name: 'Fundação',
+      genre: 'Ficção Científica',
+      author: {
+        name: 'Isaac Asimov',
+        birthYear: 1920,
+      },
+      releaseYear: 1951,
+    },
+    {
+      id: 4,
+      name: 'Duna',
+      genre: 'Ficção Científica',
+      author: {
+        name: 'Frank Herbert',
+        birthYear: 1920,
+      },
+      releaseYear: 1965,
+    },
+    {
+      id: 5,
+      name: 'A Coisa',
+      genre: 'Terror',
+      author: {
+        name: 'Stephen King',
+        birthYear: 1947,
+      },
+      releaseYear: 1986,
+    },
+  ],
+};
+
+const formattedBookNames = () => {
+  return obj.books.map((book) => (`${book.name} - ${book.genre} - ${book.author.name}`));
+};
+
+console.log(formattedBookNames());
+
+
+//// Exercício 47
+// Implemente a função nameAndAge que deve retornar um array de objetos, cada objeto deve conter:
+// A chave author, e o valor deve ser o nome da pessoa autora;
+// A chave age, e o valor deve ser a idade da pessoa autora quando lançou o livro.
+
+const nameAndAge = () => obj.books
+.map((book) => ({author: book.author.name, age: book.releaseYear - book.author.birthYear}))
+
+console.log(nameAndAge());
+
+//const getCardsByType = (data, cardType) => data
+//  .filter((card) => card.typeId === cardType)
+//  .map((card) => ({typeId: card.typeId, name: card.name}));
