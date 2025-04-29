@@ -68,7 +68,7 @@ if (numOne > numTwo) {
   console.log("O maior número é o: " + numTwo);
 }
 
-// Exercício 7
+//Exercício 7
 let numero1 = 151;
 let numero2 = 150;
 let numero3 = 15;
@@ -696,5 +696,41 @@ console.log(getCardsByType(dataCardsFour.cards, 1));
 // Exercício 35
 const sortNumbers = [1, 6, 3, 20, 9, 85, 5, 4, 7, 0];
 
-const sortArray = sortNumbers.sort((a,b) => b -a);
+const sortArray = sortNumbers.sort((a,b) => a - b);
 console.log(sortArray);
+
+// Exercício 36
+
+
+// PEGUE TODAS AS CARTAS QUE POSSUEM ATAQUE E COLOQUE EM ORDEM CRESCENTE POR ATAQUE. MOSTRE DA SEGUINTE FORMA:
+
+/*
+[
+  { name: 'D.D. Crow', atk: 100 },
+  { name: 'Eka the Flame Buddy', atk: 1500 },
+  ...
+  ]
+  */
+
+const dataCardsFive = require('./dataMap');
+const sortCardByAtk = (data) => { 
+const hasAttack = data.filter((card) => card.atk >= 0)
+.map((card) => ({name: card.name, atk: card.atk}))
+.sort((a,b) => a.atk - b.atk);
+return hasAttack;
+
+};
+
+console.log(sortCardByAtk(dataCardsFive.cards));
+
+
+
+
+// Exercício 37
+// Exiba todas as cartas com ataque maior que 2000.
+const dataCardsSix = require('./dataMap');
+const getCardsByAtks = (data, atkNumber) => {
+  const atk = data.filter((card) => card.atk >= atkNumber)
+  return atk;
+};
+console.log(getCardsByAtks(dataCardsSix.cards, 2000));
