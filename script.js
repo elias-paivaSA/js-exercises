@@ -248,6 +248,7 @@ const mcDonalds = {
 
 console.log(Object.entries(mcDonalds));
 
+const data = require("./data");
 //Exercício 24
 /* 
 RELATÓRIO DE ITEMS VENDIDOS NO MC DONALDS
@@ -734,3 +735,39 @@ const getCardsByAtks = (data, atkNumber) => {
   return atk;
 };
 console.log(getCardsByAtks(dataCardsSix.cards, 2000));
+
+
+// Exercício 38
+const dataCardsSeven = require('./dataMap');
+const getCardName = dataCardsSeven.types.map((card) => card.name)
+console.log(getCardName);
+
+// Exercício 39
+const dataCardsEight = require('./dataMap');
+const findCard = (data, cardName) => {
+const foundCard = data.find((card) => card.name === cardName);
+return foundCard;
+};
+console.log(findCard(dataCardsEight.cards, "Dark Magician"));
+
+//// Exercício 40
+// Encontre a primeira carta de acordo com o seu tipo
+const dataCardsNine = require('./dataMap');
+const firstCardByType = (typename) => {
+  const getType = dataCardsNine.types.find((type) => type.name === typename);
+  const getCard = dataCardsNine.cards.find((card) => card.typeId === getType.id);
+  return getCard;
+}
+console.log(firstCardByType('Fusion Monster'));
+
+//// Exercício 41
+// Adiciona a propriedade "game" em todos os elementos do array cards
+const dataCardsTen = require('./dataMap');
+const addProperty = (propKey, propValue) => {
+  dataCardsTen.cards.forEach((card) => card[propKey] = propValue)
+};
+
+addProperty("game", "Yu-Gi-Oh!");
+console.log(dataCardsTen.cards);
+
+//// Exercício 42
