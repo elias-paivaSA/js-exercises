@@ -1045,7 +1045,7 @@ console.log(countryInfoArray)
 const findCountry = (countries, countryName) => {
   const result = countries.find((country) => country.name === countryName);
 
-  if (!result) return 'País não encontrado!';
+  if(!result) return 'País não encontrado!';
 
   return result;
 };
