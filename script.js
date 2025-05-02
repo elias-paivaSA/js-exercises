@@ -748,7 +748,7 @@ const findCard = (data, cardName) => {
 const foundCard = data.find((card) => card.name === cardName);
 return foundCard;
 };
-console.log(findCard(dataCardsEight.cards, "Dark Magician"));
+console.log(findCard(dataCardsEight.cards, "Dark Magician")) ;
 
 //// Exercício 40
 // Encontre a primeira carta de acordo com o seu tipo
